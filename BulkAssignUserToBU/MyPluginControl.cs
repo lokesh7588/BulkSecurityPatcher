@@ -12,6 +12,9 @@ using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Sdk;
 using McTools.Xrm.Connection;
 using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using System.Net;
 
 namespace BulkAssignUserToBU
 {
@@ -69,7 +72,7 @@ namespace BulkAssignUserToBU
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
-            ShowInfoNotification("This is a notification that can lead to XrmToolBox repository", new Uri("https://github.com/MscrmTools/XrmToolBox"));
+            //ShowInfoNotification("This is a notification that can lead to XrmToolBox repository", new Uri("https://github.com/MscrmTools/XrmToolBox"));
 
             // Loads or creates the settings for the plugin
             if (!SettingsManager.Instance.TryLoad(GetType(), out mySettings))
@@ -93,35 +96,35 @@ namespace BulkAssignUserToBU
         {
             // The ExecuteMethod method handles connecting to an
             // organization if XrmToolBox is not yet connected
-            ExecuteMethod(GetAccounts);
+           // ExecuteMethod(GetAccounts);
         }
 
-        private void GetAccounts()
-        {
-            WorkAsync(new WorkAsyncInfo
-            {
-                Message = "Getting accounts",
-                Work = (worker, args) =>
-                {
-                    args.Result = Service.RetrieveMultiple(new QueryExpression("account")
-                    {
-                        TopCount = 50
-                    });
-                },
-                PostWorkCallBack = (args) =>
-                {
-                    if (args.Error != null)
-                    {
-                        MessageBox.Show(args.Error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    var result = args.Result as EntityCollection;
-                    if (result != null)
-                    {
-                        MessageBox.Show($"Found {result.Entities.Count} accounts");
-                    }
-                }
-            });
-        }
+        //private void GetAccounts()
+        //{
+        //    WorkAsync(new WorkAsyncInfo
+        //    {
+        //        Message = "Getting accounts",
+        //        Work = (worker, args) =>
+        //        {
+        //            args.Result = Service.RetrieveMultiple(new QueryExpression("account")
+        //            {
+        //                TopCount = 50
+        //            });
+        //        },
+        //        PostWorkCallBack = (args) =>
+        //        {
+        //            if (args.Error != null)
+        //            {
+        //                MessageBox.Show(args.Error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //            var result = args.Result as EntityCollection;
+        //            if (result != null)
+        //            {
+        //                MessageBox.Show($"Found {result.Entities.Count} accounts");
+        //            }
+        //        }
+        //    });
+        //}
 
         /// <summary>
         /// This event occurs when the plugin is closed
@@ -484,7 +487,10 @@ namespace BulkAssignUserToBU
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.dynamisity.com");
+            System.Diagnostics.Process.Start("https://onedrive.live.com/download?cid=7D9EF6739DF33241&resid=7D9EF6739DF33241%2139631&authkey=AJxgHfJnxeFFVKA");
+
+            //WebClient webClient = new WebClient();
+            //webClient.DownloadFile("https://onedrive.live.com/download?cid=7D9EF6739DF33241&resid=7D9EF6739DF33241%2139631&authkey=AJxgHfJnxeFFVKA", @"c:\sampletemplate.csv");
         }
 
         private void tsbAboutUs_Click(object sender, EventArgs e)
@@ -522,6 +528,11 @@ namespace BulkAssignUserToBU
         private void RemoveExistingcheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             checkbox = true;
+        }
+
+        private void toolStripMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

@@ -73,6 +73,7 @@
             this.toolStripMenu.Size = new System.Drawing.Size(1475, 31);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
+            this.toolStripMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenu_ItemClicked);
             // 
             // tsbClose
             // 
@@ -89,12 +90,11 @@
             // 
             // tsbHelp
             // 
-            this.tsbHelp.Image = global::BulkAssignUserToBU.Properties.Resources.Help;
+            this.tsbHelp.Image = global::BulkAssignUserToBU.Properties.Resources.arrow_down;
             this.tsbHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbHelp.Name = "tsbHelp";
-            this.tsbHelp.Size = new System.Drawing.Size(60, 28);
-            this.tsbHelp.Text = "Help";
-            this.tsbHelp.Visible = false;
+            this.tsbHelp.Size = new System.Drawing.Size(141, 28);
+            this.tsbHelp.Text = "Download Template";
             this.tsbHelp.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator1
